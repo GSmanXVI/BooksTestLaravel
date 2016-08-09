@@ -1,0 +1,45 @@
+button
+    font-family: 'Arial'
+    font-weight: lighter
+    font-size: 16px
+    padding: 5px 20px
+    margin-right: 4px
+    margin-top: 4px
+    @media (max-width: 480px)
+        width: 100%
+
+.book
+    display: flex
+    flex-wrap: wrap
+    .image
+        width: 25%
+        height: 200px
+        overflow: hidden
+        @media (max-width: 480px)
+            width: 100%
+        img
+            width: 100%
+    .data
+        width: calc(75% - 30px)
+        padding: 0 0 0 30px
+        @media (max-width: 480px)
+            width: 100%
+            padding: 0
+        p
+            font-family: 'Arial'
+            font-weight: lighter
+            font-size: 14px
+            width: 100%
+            padding: 10px
+            margin: 0
+            border: 0
+            @media (max-width: 480px)
+                padding: 10px 0
+        .name
+            font-size: 30px
+    .info
+        width: 100%
+        white-space: pre-wrap
+        width: 100%
+        font-family: 'Arial'
+        font-size: 14px

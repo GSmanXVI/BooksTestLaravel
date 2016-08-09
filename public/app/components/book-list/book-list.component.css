@@ -1,0 +1,65 @@
+button {
+  font-family: 'Arial';
+  font-weight: lighter;
+  font-size: 16px;
+  padding: 5px 20px; }
+  @media (max-width: 480px) {
+    button {
+      width: 100%; } }
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-bottom: 1px solid gray; }
+  .tabs p {
+    font-family: 'Arial';
+    font-weight: lighter;
+    color: gray;
+    text-transform: uppercase;
+    margin: 20px 30px 10px 0;
+    cursor: pointer; }
+    .tabs p.active, .tabs p:hover {
+      color: black; }
+
+.group-name {
+  font-family: 'Arial';
+  font-weight: lighter;
+  color: grey; }
+
+.books {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -5px; }
+  .books .book {
+    width: calc(33% - 6.66px);
+    min-width: 200px;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+    margin: 5px;
+    cursor: pointer; }
+    @media (max-width: 1005px) {
+      .books .book {
+        width: calc(50% - 10px); } }
+    @media (max-width: 480px) {
+      .books .book {
+        width: 100%; } }
+    .books .book img {
+      width: 100%; }
+    .books .book .data {
+      position: absolute;
+      background-color: rgba(45, 45, 45, 0.8);
+      color: white;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 50%;
+      font-family: 'Arial';
+      font-weight: lighter; }
+      .books .book .data .data-name {
+        font-size: 20px;
+        margin: 5px 5px 20px 10px; }
+      .books .book .data .data-author, .books .book .data .data-year, .books .book .data .data-genre {
+        font-size: 14px;
+        margin: 10px 5px 10px 10px; }

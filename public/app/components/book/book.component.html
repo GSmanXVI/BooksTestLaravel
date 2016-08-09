@@ -1,0 +1,14 @@
+<div *ngIf="book" class="book">
+    <div class="image">
+        <img [src]="book.image" alt="book">
+    </div>
+    <div class="data">
+        <p class="name">{{book.name}}</p>
+        <p class="author">{{book.author}}</p>
+        <p class="year">{{book.year}}</p>
+        <p class="genre">{{book.genre}}</p>
+    </div>
+    <pre class="info">{{book.info}}</pre>
+    <button [routerLink]="['/books']">Назад</button>
+    <button [routerLink]="['/books', book.id, 'edit']">Редактировать</button>
+</div>

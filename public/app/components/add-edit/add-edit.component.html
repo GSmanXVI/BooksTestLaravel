@@ -1,0 +1,112 @@
+<form
+    *ngIf="book"
+    novalidate
+    #bookForm="ngForm">
+    <div class="book">
+        <div class="image">
+            <img [src]="book.image" alt="book">
+        </div>
+        <div class="img-upload">
+            <input
+                type="file"
+                name="name"
+                (change)="onChange($event)"
+                name="displayImage"
+                value="Выберите обложку">
+            <p
+                class="error"
+                [hidden]="true">
+                Размер обложки не должен привышать 1мб.
+            </p>
+        </div>
+        <div class="data">
+            <div class="name">
+                <input
+                    placeholder="Название книги"
+                    type="text"
+                    required
+                    maxlength="150"
+                    [(ngModel)]="book.name"
+                    ngControl="bookName"
+                    #bookName="ngModel"
+                    name="name">
+                <p
+                    class="error"
+                    [hidden]="bookName.valid || bookName.pristine">
+                    Введите корректное название книги.
+                </p>
+            </div>
+            <div class="author">
+                <input
+                    placeholder="Имя автора"
+                    type="text"
+                    required
+                    maxlength="150"
+                    pattern="^[A-Za-zА-Яа-я-. ]{2,}$"
+                    [(ngModel)]="book.author"
+                    ngControl="bookAuthor"
+                    #bookAuthor="ngModel"
+                    name="author">
+                <p
+                    class="error"
+                    [hidden]="bookAuthor.valid || bookAuthor.pristine">
+                    Введите корректное имя автора.
+                </p>
+            </div>
+            <div class="year">
+                <input
+                    placeholder="Год"
+                    type="text"
+                    required
+                    pattern="^[0-9]{4}$"
+                    [(ngModel)]="book.year"
+                    gControl="bookYear"
+                    #bookYear="ngModel"
+                    name="year">
+                <p
+                    class="error"
+                    [hidden]="bookYear.valid || bookYear.pristine">
+                    Введите корректный год.
+                </p>
+            </div>
+            <div class="genre">
+                <select
+                    placeholder="Жанр"
+                    *ngIf="genres"
+                    required
+                    [(ngModel)]="book.genreId"
+                    gControl="bookGenre"
+                    #bookGenre="ngModel"
+                    value="{{book.genreId}}"
+                    name="genre">
+                    <option
+                        *ngFor="let genre of genres"
+                        value="{{genre.id}}">
+                        {{genre.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="info">
+            <textarea
+                placeholder="Описание книги"
+                name="name"
+                rows="10"
+                maxlength="2000"
+                required
+                [(ngModel)]="book.info"
+                gControl="bookInfo"
+                #bookInfo="ngModel"
+                name="info">
+            </textarea>
+            <p
+                class="error"
+                [hidden]="bookInfo.valid || bookInfo.pristine">
+                Введите описание.
+            </p>
+        </div>
+    </div>
+    <button (click)="cancel()">Отмена</button>
+    <button (click)="save()" [disabled]="!bookForm.form.valid">Сохранить</button>
+    <button *ngIf="book.id" (click)="delete()">Удалить</button>
+</form>

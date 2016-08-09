@@ -1,0 +1,25 @@
+<button [routerLink]="['/books/add']">Добавить книгу</button>
+<div class="tabs">
+    <p [class.active]="isActive('name')" (click)="changeTab('name')">Название</p>
+    <p [class.active]="isActive('author')" (click)="changeTab('author')">Автор</p>
+    <p [class.active]="isActive('genre')" (click)="changeTab('genre')">Жанр</p>
+</div>
+<div *ngIf="books" class="book-grid">
+    <div class="group" *ngFor="let value of (books | getFields: tab)">
+        <p class="group-name">{{value}}</p>
+        <div class="books">
+            <div
+                class="book"
+                *ngFor="let item of (books | sortByField: tab: value); let i = index"
+                [routerLink]="['/books', item.id]">
+                <img [src]="item.image" alt="book">
+                <div class="data">
+                    <p class="data-name">{{item.name}}</p>
+                    <p class="data-author">{{item.author}}</p>
+                    <p class="data-year">{{item.year}}</p>
+                    <p class="data-genre">{{item.genre}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
